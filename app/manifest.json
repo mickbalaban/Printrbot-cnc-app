@@ -1,0 +1,31 @@
+{
+    "name": "__MSG_appName__",
+    "description": "__MSG_appDescription__",
+    "version": "0.0.4",
+    "manifest_version": 2,
+    "default_locale": "en",
+    "permissions": [
+        "alarms",
+        {
+            "fileSystem": [
+                "write",
+                "retainEntries",
+                "directory"
+            ]
+        },
+        "serial"
+    ],
+    "icons": {
+        "16": "images/pb_16.png",
+        "48": "images/pb_48.png",
+        "128": "images/pb_128.png"
+    },
+    "app": {
+        "background": {
+            "scripts": [
+                "scripts/main.js",
+                "scripts/chromereload.js"
+            ]
+        }
+    }
+}

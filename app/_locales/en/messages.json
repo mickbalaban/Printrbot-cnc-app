@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "printrbot cnc",
+        "description": "The name of the application"
+    },
+    "appDescription": {
+        "message": "printrbot cnc client app",
+        "description": "The description of the application"
+    }
+}

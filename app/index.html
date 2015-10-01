@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>cnc</title>
+
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+
+      <div class="connecting-msg alert alert-info">
+          <i class="fa fa-cog fa-spin"></i> Connecting... please wait
+      </div>
+
+      <div class="connection-error alert alert-danger hidden">
+          <i class="fa fa-plug fa-exclamation-circle"></i> Connection error. Make sure machine is connected and powered on.
+          <br/><button class="btn btn-default connect-button btn-sm" style="margin-top:10px;"><i class="fa fa-plug"></i> Connect</button>
+      </div>
+
+      <div class="content hidden">
+        <div class="header">
+            <a class="btn active program-page-btn"><i class="fa fa-play-circle"></i></a>
+            <a class="btn console-page-btn"><i class="fa fa-terminal"></i></a>
+            <img src="images/pblogo.png" class="pull-right pblogo"/>
+        </div>
+
+          <div class="program-page">
+            <div class="jogview">
+              <div class="row dro-ctrl">
+
+                  <div class="jog-type col-xs-4">
+                      <div class="l">Control type:</div>
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fa fa-refresh"></i> jog
+                          <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" idx="con"><i class="fa fa-refresh"></i> jog </a></li>
+                          <li><a href="#" idx="inc"><i class="fa fa-ellipsis-h"></i> step </a></li>
+                      </ul>
+                  </div>
+                  <div class="units col-xs-4">
+                      <div class="l">Units:</div>
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                          <i class="fa fa-tachometer"></i> mm
+                          <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" idx="mm"><i class="fa fa-tachometer"></i> mm</a></li>
+                          <li><a href="#" idx="inch"><i class="fa fa-tachometer"></i> inch</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-xs-4 jog-speed">
+                      <div class="l">Speed (mm/min):</div>
+                      <input type="number" value="19"/>
+                  </div>
+              </div>
+              <div class="dros">
+                  <div class="dro-axis x">
+                      <label>X</label>
+                      <button class="btn jog-xyz" ctrl="x-"><i class="fa fa-minus"></i></button>
+                      <input type="text" ctrl="x" value="0.00"/>
+                      <button class="btn jog-xyz"  ctrl="x+"><i class="fa fa-plus"></i></button>
+                      <button class="btn z"><i class="fa fa-dot-circle-o"></i></button>
+                      <button class="btn h"><i class="fa fa-home"></i></button>
+                  </div>
+                  <div class="dro-axis y">
+                      <label>Y</label>
+                      <button class="btn jog-xyz" ctrl="y-"><i class="fa fa-minus"></i></button>
+                      <input type="text"  ctrl="y" value="0.00"/>
+                      <button class="btn jog-xyz"  ctrl="y+"><i class="fa fa-plus"></i></button>
+                      <button class="btn z"><i class="fa fa-dot-circle-o"></i></button>
+                      <button class="btn h"><i class="fa fa-home"></i></button>
+                  </div>
+                  <div class="dro-axis z">
+                      <label>Z</label>
+                      <button class="btn jog-xyz" ctrl="z-"><i class="fa fa-minus"></i></button>
+                      <input type="text"  ctrl="z" value="0.00"/>
+                      <button class="btn jog-xyz"  ctrl="z+"><i class="fa fa-plus"></i></button>
+                      <button class="btn z"><i class="fa fa-dot-circle-o"></i></button>
+                      <button class="btn h"><i class="fa fa-home"></i></button>
+                  </div>
+              </div>
+            </div>
+            <!-- end jogview -->
+
+            <div class="panel panel-default control-panel">
+              <div class="panel-body">
+                  <button class="btn motors-off btn-xs col-xs-4"><i class="fa fa-power-off"></i> Motors Off</button>
+                  <button class="btn clear-alarm btn-xs col-xs-4"><i class="fa fa-exclamation-triangle"></i> Clear Alarm</button>
+                  <button class="btn stop-and-flush btn-xs col-xs-4"><i class="fa fa-refresh"></i> Stop &amp; Flush</button>
+              </div>
+            </div>
+
+            <div class="program-view panel panel-default">
+              <div class="panel-heading">
+                  <div class="panel-title">No program loaded</div>
+              </div>
+              <div class="panel-body">
+                <div class="program-code-block">
+                  <textarea class="form-control" disabled></textarea>
+                </div>
+                <div class="progress program-progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar">
+                    0%
+                  </div>
+                </div>
+                <div class="program-actions">
+                  <div class="run-actions">
+                    <button class="btn btn-xs program-edit"><i class="fa fa-edit"></i> Edit</button>
+                    <button class="btn btn-xs program-clear"><i class="fa fa-remove"></i> Clear</button>
+                    <button class="btn program-start "><i class="fa fa-play"></i> Run</button>
+                    <button class="btn program-pause"><i class="fa fa-pause"></i> <span>Pause</span></button>
+                  </div>
+                  <div class="edit-actions">
+                    <button class="btn btn-xs program-edit-cancel"><i class="fa fa-remove"></i> Cancel</button>
+                    <button class="btn btn-xs program-edit-save"><i class="fa fa-floppy-o"></i> update</button>
+                  </div>
+                  <button class="btn program-load"><i class="fa fa-folder-open"></i> Load</button>
+                </div>
+              </div>
+            </div>
+          </div>  <!-- program-page -->
+
+          <div class="console-page hidden">
+            <div class="console-out"></div>
+            <input class="console-in form-control"/>
+          </div>
+
+          <!--<button class="estop btn btn-lg"><i class="fa fa-exclamation-circle"></i> STOP</button>-->
+          <div class="machine-status"><i class="fa fa-hand-o-right"></i> <span>...</span></div>
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/backbone/backbone.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- build:js scripts/index.js -->
+        <script src="scripts/index.js"></script>
+        <script src="scripts/JogView.js"></script>
+        <script src="scripts/NavView.js"></script>
+        <script src="scripts/ConsoleView.js"></script>
+        <script src="scripts/Machine.js"></script>
+        <script src="scripts/Stream.js"></script>
+        <script src="scripts/ControlView.js"></script>
+        <script src="scripts/ProgramView.js"></script>
+        <script src="scripts/StatusBarView.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
